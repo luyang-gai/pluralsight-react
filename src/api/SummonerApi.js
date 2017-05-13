@@ -1,73 +1,60 @@
 const Client = require('node-rest-client').Client;
 const client = new Client();
 const host = 'http://localhost:3000';
-const matchData = require('./matchdata');
+import matchData from './matchdata';
+import currentGame from './current-game';
+import * as apis from './CommonsApi';
+
+const RIOT_HOST = 'https://na.api.riotgames.com';
+const API_KEYS = [
+  '97cb5a96-660c-40f6-aee5-59c80b50beaf', //smokensleep
+  '593a8b66-8b3f-4900-99ca-f3c3a7b37229', //BIGLUIE
+  '1a417329-8a55-43cb-9262-928bff0ccec9', //tbroner
+  'RGAPI-d69ec951-e1a4-4d1c-aab0-78378cd3e745', //mybigfatashe
+  'RGAPI-c2943d92-072d-449c-a426-8b56dc524a32', //bbotts
+  '8ffb0850-f422-4a36-acf2-b6905253c81e' //bbottles
+];
+let count = 0;
 
 class SummonerApi {
+  //GET /summoner/:name
   static getSummonerByName(name) {
-    return this.GET(`${host}/summoner/${name}`);
+    return apis.GET(`${host}/summoner/${name}`);
   }
 
+  //GET /summoner/:id/matchHistory
   static getMatchHistoryBySummonerId(summonerId) {
-    return this.GET(`${host}/summoner/${summonerId}/matchHistory`);
+    return apis.GET(`${host}/summoner/${summonerId}/matchHistory`);
   }
 
+  //GET /match/:matchId
   static getMatchByMatchId(matchId) {
-    return this.GET(`${host}/match/${matchId}`);
+    return apis.GET(`${host}/match/${matchId}`);
+  }
+
+  static getSummonerStatsBySummonerId(id) {
+    return apis.GET(`${host}/summoner/${id}/rankedStats`);
+  }
+
+  static getRankedLeagueBySummonerId(id) {
+    return apis.GET(`${host}/summoner/${id}/leagues`);
   }
 
   static getMatchHistoryBySummonerName(name) {
     return this.getSummonerByName(name)
       .then((response) => {
-        console.log(`response: ${JSON.stringify(response)}`);
-        console.log(`summonerId: ${response.summonerId}`);
         let summonerId = response.id;
-        debugger;
         return this.getMatchHistoryBySummonerId(summonerId);
       })
       .then((response) => {
-        debugger;
         return response;
       })
       .catch(err => console.error(err));
   }
 
-  static mockGetMatchHistoryBySummonerName(name) {
-    let promiseList = [];
-
+  static mockGetCurrentGame() {
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        let matches = matchData.default.matches;
-
-        for (let i = 0; i < matches.length; i++) {
-          promiseList.push(
-            this.getMatchByMatchId(matches[i].matchId).then(match => {
-              return match;
-            })
-          );
-        }
-        Promise.all(promiseList).then(matches => {
-          debugger;
-          return matches;
-        });
-      }, 2000);
-    });
-  }
-
-  static mockGetRankedStatsData() {
-    return new Promise((resolve, reject) => {
-      let mockMatchData = {
-        'firstBaron': .56,
-        'firstTower': .76,
-        'firstDragon': .75,
-        'firstInhibitor': .95,
-        'firstBlood': .55,
-        'infernal': .75,
-        'mountain': .70,
-        'cloud': .55,
-        'ocean': .56
-      };
-      resolve(mockMatchData);
+      resolve(currentGame);
     });
   }
 
@@ -88,13 +75,8 @@ class SummonerApi {
       });
   }
 
-  static GET(url) {
-    return new Promise((resolve, reject) => {
-      client.get(url, (data, response) => {
-        resolve(data);
-      })
-      .on('error', err => reject(err));
-    });
+  static getApiKey() {
+    return API_KEYS[count % API_KEYS.length];
   }
 }
 

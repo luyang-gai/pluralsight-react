@@ -1,34 +1,23 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import TextInput from './TextInput';
+import Button from'./Button';
+import CenteredForm from './CenteredForm';
 
-const SearchBar = ({summoner, onSubmit, onChange, errors}) => {
-  const styles = {
-    display: "flex"
-  };
-
+const SearchBar = ({onSubmit, onChange}) => {
   return (
-    <form style={styles}>
+    <CenteredForm>
       <TextInput
-        name="summonerName"
         label="Summoner Name"
-        value={summoner}
         placeholder="Search..."
         onChange={onChange}/>
-
-      <input
-        type="submit"
-        value="Search"
-        className="btn btn-primary"
-        onClick={onSubmit}/>
-    </form>
+      <Button onClick={onSubmit}>Search</Button>
+    </CenteredForm>
   );
 };
 
 SearchBar.propTypes = {
-  summoner: React.PropTypes.string.isRequired,
-  onSubmit: React.PropTypes.func.isRequired,
-  onChange: React.PropTypes.func.isRequired,
-  errors: React.PropTypes.object
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
 };
 
 export default SearchBar;

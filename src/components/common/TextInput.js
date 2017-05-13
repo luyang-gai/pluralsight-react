@@ -1,32 +1,12 @@
 import React, {PropTypes} from 'react';
+import styled from 'styled-components';
+import * as styles from './Styles';
 
-const TextInput = ({name, label, onChange, placeholder, value, error}) => {
-  let wrapperClass = 'form-group';
-  if (error && error.length > 0) {
-    wrapperClass += " " + 'has-error';
-  }
-
-  return (
-      <div className="field">
-        <input
-          type="text"
-          name={name}
-          className="form-control"
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}/>
-        {error && <div className="alert alert-danger">{error}</div>}
-      </div>
-  );
-};
-
-TextInput.propTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  value: PropTypes.string,
-  error: PropTypes.string
-};
+const TextInput = styled.input`
+  background-color: white;
+  height: 100%;
+  border: 1.5px solid ${styles.PRIMARY_COLOR};
+  padding-left: 5px;
+`;
 
 export default TextInput;

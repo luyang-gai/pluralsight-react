@@ -28,8 +28,8 @@ class SummonerSearchPage extends React.Component {
       .then((data) => {
         this.redirect();
       })
-      .catch(error => {x
-        console.log(`error received :( ${error}`);
+      .catch(error => {
+        // console.log(`error received :( ${error}`);
       });
   }
 
@@ -62,7 +62,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 SummonerSearchPage.propTypes = {
-  summonerName: PropTypes.string.isRequired
+  summonerName: PropTypes.string.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 SummonerSearchPage.contextTypes = {

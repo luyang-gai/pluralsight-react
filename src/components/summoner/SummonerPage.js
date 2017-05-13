@@ -1,44 +1,53 @@
 import React, {PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as summonerActions from '../../actions/summonerActions';
+import * as currentMatchActions from '../../actions/currentMatchActions';
+import CardWrapper from './CardWrapper';
+import SummonerInfoCard from './SummonerInfoCard';
+import CardContainer from './CardContainer';
 
 class SummonerPage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
     this.state = {
-      summoner: {},
+      currentMatch: {},
       errors: {}
     };
-
   }
 
   render() {
-    debugger;
-    console.log(`this.props.summoner: ${this.props.summoner}`);
     return (
-      <div className="jumbotron">
-        <div>Summoner information: {this.props.summoner.summonerLevel}</div>
-      </div>
+      <CardContainer>
+        {this.props.currentMatch.participants.map(participant =>
+          <CardWrapper>
+            <SummonerInfoCard participant={participant}/>
+          </CardWrapper>
+        )}
+      </CardContainer>
     );
   }
 }
 
+// {this.props.currentMatch.participants.map(keyValue =>
+//   <StatBox stat={keyValue} value={this.props.currentMatch.participants[keyValue]['championId']}/>
+// )}
+
 function mapStateToProps(state, ownProps) {
+  debugger;
   return {
-    summoner: state.summoner
+    currentMatch: state.currentMatch
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(summonerActions, dispatch)
+    actions: bindActionCreators(currentMatchActions, dispatch)
   };
 }
 
 SummonerPage.propTypes = {
-  summonerName: PropTypes.string.isRequired
+  actions: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SummonerPage);

@@ -17,3 +17,7 @@ nav {
   padding-left: 0px;
   padding-right: 0px;
 }
+
+html, body, #app, .container-fluid {
+  height: 100%;
+}
