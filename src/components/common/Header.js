@@ -39,7 +39,7 @@ class Header extends React.Component {
   }
 
   navigateToSummonerPage() {
-    this.context.router.push('/summoner');
+    this.context.router.push(`/summoner/${this.state.summonerName}`);
   }
 
   search(event) {
@@ -47,7 +47,6 @@ class Header extends React.Component {
 
     this.props.actions.mockGetCurrentGame(this.state.summonerName)
       .then((data) => {
-        debugger;
         this.navigateToSummonerPage();
       })
       .catch(error => {
@@ -56,24 +55,24 @@ class Header extends React.Component {
   }
 
   render() {
-
     return (
       <div className="headerWrapper" style={styles}>
-        <nav style={navStyles}>
-          <IndexLink to="/" activeClassName="active">Home</IndexLink>
-          {" | "}
-          <Link to="/courses" activeClassName="active">Courses</Link>
-          {" | "}
-          <Link to="/about" activeClassName="active">About</Link>
-          {this.props.loading && <LoadingDots interval={100} dots={20}/>}
-          {" | "}
-          <Link to="/summonerSearch" activeClassName="active">Summoner</Link>
-        </nav>
-        <SearchBar onSubmit={this.search} onChange={this.updateSummonerName}/>
+        <SearchBar onSubmit={this.navigateToSummonerPage} onChange={this.updateSummonerName}/>
       </div>
     );
   }
 }
+
+{/*<nav style={navStyles}>*/}
+  {/*<IndexLink to="/" activeClassName="active">Home</IndexLink>*/}
+  {/*{" | "}*/}
+  {/*<Link to="/courses" activeClassName="active">Courses</Link>*/}
+  {/*{" | "}*/}
+  {/*<Link to="/about" activeClassName="active">About</Link>*/}
+  {/*{this.props.loading && <LoadingDots interval={100} dots={20}/>}*/}
+  {/*{" | "}*/}
+  {/*<Link to="/summonerSearch" activeClassName="active">Summoner</Link>*/}
+{/*</nav>*/}
 
 function mapStateToProps(state, ownProps) {
   return {

@@ -1,7 +1,7 @@
 const Client = require('node-rest-client').Client;
 const client = new Client();
 const host = 'http://localhost:3000';
-import matchData from './matchdata';
+import { matchdata } from './matchdata';
 import currentGame from './current-game';
 import * as apis from './CommonsApi';
 import SummonerApi from './SummonerApi';
@@ -16,7 +16,7 @@ class MockSummonerApi {
 
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        let matches = matchData.default.matches;
+        let matches = matchdata.matches;
 
         for (let i = 0; i < matches.length; i++) {
           promiseList.push(

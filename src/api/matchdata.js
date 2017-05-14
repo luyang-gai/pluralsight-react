@@ -1,4 +1,4 @@
-export default {
+let matchdata = {
   "matches": [{
     "region": "NA",
     "platformId": "NA1",
@@ -121,4 +121,6 @@ export default {
     "role": "SOLO"
   }]
 };
+
+export { matchdata };
 

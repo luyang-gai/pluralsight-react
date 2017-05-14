@@ -50,7 +50,7 @@ class SummonerInfoCard extends React.Component  {
         <div>{summoner.currentChampionStats.totalSessionsPlayed} games</div>
         <RankIcon styles={imageStyles} tier={this.getTier(summoner)} rank={this.getLeague(summoner)}/>
       </div>
-    )
+    );
   }
 
 
