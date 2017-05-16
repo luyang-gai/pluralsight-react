@@ -1,17 +1,21 @@
 import React, {PropTypes} from 'react';
 import ImageApi from '../../api/ImageApi';
 import RankIcon from '../RankIcon';
+import SummonerSpell from '../common/SummonerSpell/SummonerSpell';
+import { numeralMap } from '../../data/numeral-map';
 
 let imageStyles = {
-  height: "100px"
+  display: "block",
+  margin: "auto"
 };
 
-const numeralMap = {
-  'I': '1',
-  'II': '2',
-  'III': '3',
-  'IV': '4',
-  'V': '5'
+let summonerSpellStyles = {
+  display: "flex",
+  justifyContent: "center"
+};
+
+let summonerCardHeaderStyles = {
+  display: "flex"
 };
 
 class SummonerInfoCard extends React.Component  {
@@ -43,20 +47,29 @@ class SummonerInfoCard extends React.Component  {
     let summoner = this.props.participant;
     return (
       <div>
-        <img src={ImageApi.getImageByChampionId(summoner.championId)}/>
+        <div className='summoner-card-header' style={summonerCardHeaderStyles}>
+          <img style={imageStyles} src={ImageApi.getImageByChampionId(summoner.championId)}/>
+          <RankIcon
+            styles={imageStyles}
+            tier={this.getTier(summoner)}
+            rank={this.getLeague(summoner)}
+            wins={summoner.currentChampionStats.totalSessionsWon}
+            losses={summoner.currentChampionStats.totalSessionsLost}
+            winRate={this.getChampionWinPercent()}
+          />
+        </div>
         <div>{summoner.summonerName}</div>
         <div>{summoner.rankedStats.summonerId}</div>
         <div>{this.getChampionWinPercent()}%</div>
         <div>{summoner.currentChampionStats.totalSessionsPlayed} games</div>
-        <RankIcon styles={imageStyles} tier={this.getTier(summoner)} rank={this.getLeague(summoner)}/>
+        <div className="summonerSpells" style={summonerSpellStyles}>
+          <SummonerSpell spellId={summoner.spell1Id}/>
+          <SummonerSpell spellId={summoner.spell2Id}/>
+        </div>
       </div>
     );
   }
-
-
 }
-
-//summoner.rankedStats.totalSessionsList / totalSessionsPlayed totalSessionsWon
 
 SummonerInfoCard.propTypes = {
   participant: PropTypes.object.isRequired

@@ -1,7 +1,4 @@
 import React, {PropTypes} from 'react';
-import TextInput from './TextInput';
-import Button from'./Button';
-import CenteredForm from './CenteredForm';
 
 const Spinner = ({onSubmit, onChange}) => {
   return (

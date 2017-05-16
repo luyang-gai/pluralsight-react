@@ -2,7 +2,6 @@ import React, {PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as summonerActions from '../../actions/summonerActions';
-import SearchBar from '../common/SearchBar';
 
 class SummonerSearchPage extends React.Component {
   constructor(props, context) {

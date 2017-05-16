@@ -6,6 +6,7 @@ import CardWrapper from './CardWrapper';
 import SummonerInfoCard from './SummonerInfoCard';
 import CardContainer from './CardContainer';
 import Spinner from '../common/Spinner';
+import Loader from '../HOC/Loader';
 
 class SummonerPage extends React.Component {
   constructor(props, context) {
@@ -34,12 +35,11 @@ class SummonerPage extends React.Component {
     if (this.props.currentMatch.participants) {
       return (
         <CardContainer>
-          {
-            this.props.currentMatch.participants.map(participant =>
-              <CardWrapper>
-                <SummonerInfoCard participant={participant}/>
-              </CardWrapper>
-            )}
+          {this.props.currentMatch.participants.map(participant =>
+            <CardWrapper>
+              <SummonerInfoCard participant={participant}/>
+            </CardWrapper>
+          )}
         </CardContainer>
       );
     } else {
@@ -47,10 +47,19 @@ class SummonerPage extends React.Component {
         <Spinner/>
       );
     }
-
   }
 }
 
+// return (
+//   <CardContainer>
+//     {
+//       this.props.currentMatch.participants.map(participant =>
+//         <CardWrapper>
+//           <SummonerInfoCard participant={participant}/>
+//         </CardWrapper>
+//       )}
+//   </CardContainer>
+// )
 
 // {this.props.currentMatch.participants.map(keyValue =>
 //   <StatBox stat={keyValue} value={this.props.currentMatch.participants[keyValue]['championId']}/>
