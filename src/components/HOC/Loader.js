@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Spinner from '../common/Spinner';
+import Spinner from '../../components_old/common/Spinner';
 
 const Loader = (WrappedComponent) => {
   return class extends Component {

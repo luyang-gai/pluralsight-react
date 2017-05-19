@@ -19,10 +19,30 @@ function setCurrentChampionRankedStats(currentMatch) {
     let championId = summoner.championId;
     let championsList = summoner.rankedStats.champions;
 
-    for (let i = 0; i < championsList.length; i++) {
-      if (championsList[i].id === championId) {
-        summoner['currentChampionStats'] = championsList[i].stats;
+    let wins = 0;
+    let losses = 0;
+    let played = 0;
+
+    championsList.forEach((champion) => {
+      wins += champion.stats.totalSessionsWon;
+      losses += champion.stats.totalSessionsLost;
+      played += champion.stats.totalSessionsPlayed;
+
+      if (champion.id === championId) {
+        summoner['currentChampionStats'] = champion.stats;
       }
-    }
+    });
+
+    summoner.rankedStats.totalWins = wins;
+    summoner.rankedStats.totalLosses = losses;
+    summoner.rankedStats.totalPlayed = played;
+
+    // for (let i = 0; i < championsList.length; i++) {
+    //   let stats = championsList[i].stats;
+    //
+    //   if (championsList[i].id === championId) {
+    //     summoner['currentChampionStats'] = championsList[i].stats;
+    //   }
+    // }
   }
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import App from './components_old/App';
+import App from './containers/App';
 
-import HomePage from './components_old/home/HomePage';
-import SummonerPage from './components_old/summoner/SummonerPage';
+import HomePage from './containers/home/HomePage';
+import SummonerPage from './containers/SummonerPage/SummonerPage';
 
 export default (
   <Route path="/" component={App}>

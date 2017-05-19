@@ -1,5 +1,6 @@
 import React from 'react';
-import {summonerSpells} from '../../../data/summonerspells';
+import {summonerSpells} from './summoner-spell-map';
+import Wrapper from './Wrapper';
 
 const SummonerSpell = ({spellId}) => {
   const getUrl = (id) => {
@@ -8,7 +9,9 @@ const SummonerSpell = ({spellId}) => {
   };
 
   return (
-    <img src={getUrl(spellId)}/>
+    <Wrapper>
+      <img src={getUrl(spellId)}/>
+    </Wrapper>
   );
 };
 

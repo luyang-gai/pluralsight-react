@@ -1,2 +1,8 @@
 node_modules/
 .idea/
+.DS_Store
+es6-testfiles/
+npm-debug.log
+src/components/.DS_Store
+yarn.lock
+.idea/workspace.xml

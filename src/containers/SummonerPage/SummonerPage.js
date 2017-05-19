@@ -1,20 +1,18 @@
 import React, {PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+
 import * as currentMatchActions from '../../actions/currentMatchActions';
-import CardWrapper from './CardWrapper';
-import SummonerInfoCard from './SummonerInfoCard';
-import CardContainer from './CardContainer';
-import Spinner from '../common/Spinner';
-import Loader from '../HOC/Loader';
+import SummonerInfoCard from '../../components/SummonerInfoCard/index';
+import CardContainer from '../../components_old/summoner/CardContainer';
+import Loader from '../../components/Loader/index';
 
 class SummonerPage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
     this.state = {
-      currentMatch: {},
-      errors: {}
+      currentMatch: {}
     };
 
     this.getCurrentMatch = this.getCurrentMatch.bind(this);
@@ -24,7 +22,7 @@ class SummonerPage extends React.Component {
   getCurrentMatch() {
     this.props.actions.mockGetCurrentGame(this.state.summonerName)
       .then((data) => {
-        console.log('test');
+
       })
       .catch(error => {
         console.log(`error received :( ${error}`);
@@ -32,38 +30,20 @@ class SummonerPage extends React.Component {
   }
 
   render() {
-    if (this.props.currentMatch.participants) {
-      return (
+    return (
+      <Loader loaded={this.props.currentMatch.participants}>
         <CardContainer>
-          {this.props.currentMatch.participants.map(participant =>
-            <CardWrapper>
+          {
+            this.props.currentMatch.participants &&
+            this.props.currentMatch.participants.map(participant =>
               <SummonerInfoCard participant={participant}/>
-            </CardWrapper>
-          )}
+            )
+          }
         </CardContainer>
-      );
-    } else {
-      return (
-        <Spinner/>
-      );
-    }
+      </Loader>
+    )
   }
 }
-
-// return (
-//   <CardContainer>
-//     {
-//       this.props.currentMatch.participants.map(participant =>
-//         <CardWrapper>
-//           <SummonerInfoCard participant={participant}/>
-//         </CardWrapper>
-//       )}
-//   </CardContainer>
-// )
-
-// {this.props.currentMatch.participants.map(keyValue =>
-//   <StatBox stat={keyValue} value={this.props.currentMatch.participants[keyValue]['championId']}/>
-// )}
 
 function mapStateToProps(state, ownProps) {
   return {
