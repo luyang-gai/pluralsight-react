@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import Spinner from '../../components/Spinner/index';
 
 const Loader = (props) => {
@@ -11,6 +11,11 @@ const Loader = (props) => {
       <Spinner/>
     );
   }
+};
+
+Loader.propTypes = {
+  loaded: PropTypes.bool.isRequired,
+  children: PropTypes.object.isRequired
 };
 
 export default Loader;

@@ -34,7 +34,7 @@ const SummonerInfoCard = (props) => {
 
   return (
     <Wrapper>
-      <div className='summoner-card-header' style={summonerCardHeaderStyles}>
+      <div className="summoner-card-header" style={summonerCardHeaderStyles}>
         <ChampionImage championId={summoner.championId}/>
         <SummonerRankDisplay summoner={summoner}/>
       </div>

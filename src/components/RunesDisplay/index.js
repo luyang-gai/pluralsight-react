@@ -55,7 +55,7 @@ const RunesDisplay = (props) => {
       <H4>Runes</H4>
       {
         Object.keys(runeMap).map((runeKey) =>
-          <div>{displayPlusMinus(runeKey)}{runeMap[runeKey]}{displayPercent(runeKey)} {runeKey}</div>
+          <div key={runeKey}>{displayPlusMinus(runeKey)}{runeMap[runeKey]}{displayPercent(runeKey)} {runeKey}</div>
         )
       }
     </Wrapper>

@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-const Spinner = ({onSubmit, onChange}) => {
+const Spinner = () => {
   return (
     <div className="spinner">
       <div className="rect1"></div>
@@ -10,9 +10,6 @@ const Spinner = ({onSubmit, onChange}) => {
       <div className="rect5"></div>
     </div>
   );
-};
-
-Spinner.propTypes = {
 };
 
 export default Spinner;

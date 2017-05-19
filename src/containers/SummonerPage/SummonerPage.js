@@ -36,12 +36,12 @@ class SummonerPage extends React.Component {
           {
             this.props.currentMatch.participants &&
             this.props.currentMatch.participants.map(participant =>
-              <SummonerInfoCard participant={participant}/>
+              <SummonerInfoCard key={participant.summonerId} participant={participant}/>
             )
           }
         </CardContainer>
       </Loader>
-    )
+    );
   }
 }
 

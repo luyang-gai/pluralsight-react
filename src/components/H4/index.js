@@ -3,8 +3,8 @@ import Wrapper from './Wrapper';
 
 const H4 = (props) => {
   return (
-    <Wrapper {...props}></Wrapper>
-  )
+    <Wrapper {...props}/>
+  );
 };
 
 export default H4;
