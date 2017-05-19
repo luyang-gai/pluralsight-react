@@ -16,7 +16,7 @@ const SummonerSpell = (props) => {
 };
 
 SummonerSpell.propTypes = {
-  spellId: PropTypes.string.isRequired
+  spellId: PropTypes.number.isRequired
 };
 
 export default SummonerSpell;

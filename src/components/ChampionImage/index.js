@@ -20,7 +20,7 @@ const ChampionImage = (props) => {
 };
 
 ChampionImage.propTypes = {
-  championId: PropTypes.string.isRequired
+  championId: PropTypes.number.isRequired
 };
 
 export default ChampionImage;

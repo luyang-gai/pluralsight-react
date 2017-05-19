@@ -31,7 +31,7 @@ class SummonerPage extends React.Component {
 
   render() {
     return (
-      <Loader loaded={this.props.currentMatch.participants}>
+      <Loader loaded={!!this.props.currentMatch.participants}>
         <CardContainer>
           {
             this.props.currentMatch.participants &&
