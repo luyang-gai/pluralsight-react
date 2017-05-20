@@ -11,6 +11,10 @@ class MockSummonerApi {
     return apis.GET(`${host}/match/${matchId}`);
   }
 
+  static getCurrentGameBySummonerId(summonerId) {
+    return apis.GET(`${host}/summoner/${summonerId}/active-game`);
+  }
+
   static mockGetMatchHistoryBySummonerName(name) {
     let promiseList = [];
 

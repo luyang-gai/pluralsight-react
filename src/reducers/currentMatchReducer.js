@@ -36,13 +36,5 @@ function setCurrentChampionRankedStats(currentMatch) {
     summoner.rankedStats.totalWins = wins;
     summoner.rankedStats.totalLosses = losses;
     summoner.rankedStats.totalPlayed = played;
-
-    // for (let i = 0; i < championsList.length; i++) {
-    //   let stats = championsList[i].stats;
-    //
-    //   if (championsList[i].id === championId) {
-    //     summoner['currentChampionStats'] = championsList[i].stats;
-    //   }
-    // }
   }
 }

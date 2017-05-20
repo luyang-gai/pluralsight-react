@@ -1,12 +1,19 @@
 import {createStore, applyMiddleware} from 'redux';
 import rootReducer from '../reducers';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
-import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
+
+import rootSaga from '../sagas/sagas';
+const sagaMiddleware = createSagaMiddleware();
 
 export default function configureStore(initialState) {
-  return createStore(
+  const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(thunk, reduxImmutableStateInvariant())
+    applyMiddleware(sagaMiddleware, reduxImmutableStateInvariant())
   );
+
+  sagaMiddleware.run(rootSaga);
+
+  return store;
 }

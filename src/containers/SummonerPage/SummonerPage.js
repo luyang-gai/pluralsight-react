@@ -1,11 +1,10 @@
 import React, {PropTypes} from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
-import * as currentMatchActions from '../../actions/currentMatchActions';
 import SummonerInfoCard from '../../components/SummonerInfoCard/index';
 import CardContainer from '../../components_old/summoner/CardContainer';
 import Loader from '../../components/Loader/index';
+import {loadCurrentGame} from '../../actions/currentMatchActions';
 
 class SummonerPage extends React.Component {
   constructor(props, context) {
@@ -14,19 +13,10 @@ class SummonerPage extends React.Component {
     this.state = {
       currentMatch: {}
     };
-
-    this.getCurrentMatch = this.getCurrentMatch.bind(this);
-    this.getCurrentMatch(props.routeParams.summonerName);
   }
 
-  getCurrentMatch() {
-    this.props.actions.mockGetCurrentGame(this.state.summonerName)
-      .then((data) => {
-
-      })
-      .catch(error => {
-        console.log(`error received :( ${error}`);
-      });
+  componentDidMount() {
+    this.props.loadCurrentGame(this.props.routeParams.summonerName);
   }
 
   render() {
@@ -53,12 +43,11 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(currentMatchActions, dispatch)
+    loadCurrentGame: (name) => dispatch(loadCurrentGame(name))
   };
 }
 
 SummonerPage.propTypes = {
-  actions: PropTypes.object.isRequired,
   routeParams: PropTypes.object.isRequired,
   currentMatch: PropTypes.object.isRequired
 };
