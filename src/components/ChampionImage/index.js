@@ -9,13 +9,12 @@
 
 import React, { PropTypes } from 'react';
 
-import ImageApi from '../../api/ImageApi';
+import ImageHelpers from './ImageHelpers';
 import Wrapper from './Wrapper';
 
 const ChampionImage = (props) => {
-  let championUrl = ImageApi.getImageByChampionId(props.championId);
   return (
-    <Wrapper src={championUrl} {...props}/>
+    <Wrapper src={ImageHelpers.getImageByChampionId(props.championId)} {...props}/>
   );
 };
 

@@ -1,5 +1,4 @@
 import * as types from './actionTypes';
-import SummonerApi from '../api/SummonerApi';
 import MockSummonerApi from '../api/MockSummonerApi';
 
 import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';

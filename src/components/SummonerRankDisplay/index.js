@@ -19,7 +19,7 @@ const SummonerRankDisplay = (props) => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper color={getTier(props.summoner)}>
       <RankIcon tier={getTier(props.summoner)} rank={getLeague(props.summoner)}/>
       <div className="tier-rank-info">
         <div className="tier-rank">{getTier(props.summoner)} {getLeague(props.summoner)}</div>

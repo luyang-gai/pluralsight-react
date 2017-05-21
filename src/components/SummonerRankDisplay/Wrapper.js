@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import * as styles from '../../components_old/common/Styles';
+import * as styles from '../../styles/Styles';
 
 const Wrapper = styled.div`
   align-items: center;
   text-align: center;
-  border: 2px solid ${styles.PRIMARY_COLOR};
+  border: 4px groove ${props => props.color === 'bronze' ? 'brown' : props.color};
   width: 200px;
   height: 120px;
   borderRadius: 4px;

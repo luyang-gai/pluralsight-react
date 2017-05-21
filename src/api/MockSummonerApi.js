@@ -1,10 +1,9 @@
 const Client = require('node-rest-client').Client;
 const client = new Client();
 const host = 'http://localhost:3000';
-import { matchdata } from './matchdata';
-import currentGame from './current-game';
+import { matchdata } from '../data/matchdata';
+import currentGame from '../data/current-game';
 import * as apis from './CommonsApi';
-import SummonerApi from './SummonerApi';
 
 class MockSummonerApi {
   static getMatchByMatchId(matchId) {
@@ -55,27 +54,7 @@ class MockSummonerApi {
 
   static mockGetCurrentGame() {
     return new Promise((resolve, reject) => {
-      let promiseList = [];
-      for (let i = 0; i < currentGame.participants.length; i++) {
-        let participant = currentGame.participants[i];
-        participant['leagues'] = {};
-        promiseList.push(
-          SummonerApi.getSummonerStatsBySummonerId(participant.summonerId).then(rankedStats => {
-            participant['rankedStats'] = rankedStats;
-          })
-        );
-        promiseList.push(
-          SummonerApi.getRankedLeagueBySummonerId(participant.summonerId).then(leagues => {
-            for (let i = 0; i < leagues.length; i++) {
-              let queueType = leagues[i].queueType;
-              participant['leagues'][queueType] = leagues[i];
-            }
-          })
-        );
-      }
-      Promise.all(promiseList).then(matches => {
-        return resolve(currentGame);
-      });
+      resolve(currentGame);
     });
   }
 }

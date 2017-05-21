@@ -1,7 +1,7 @@
 const Client = require('node-rest-client').Client;
 const client = new Client();
 const host = 'http://localhost:3000';
-import currentGame from './current-game';
+import currentGame from '../data/current-game';
 import * as apis from './CommonsApi';
 
 const RIOT_HOST = 'https://na.api.riotgames.com';
@@ -17,10 +17,9 @@ let count = 0;
 
 class SummonerApi {
   //GET /summoner/:name
-  static getSummonerByName(name) {
-    return apis.GET(`${host}/summoner/${name}`);
+  static getSummonerByName(summonerName) {
+    return apis.GET(`${host}/summoner/${summonerName}`);
   }
-
   //GET /summoner/:id/matchHistory
   static getMatchHistoryBySummonerId(summonerId) {
     return apis.GET(`${host}/summoner/${summonerId}/matchHistory`);
@@ -31,12 +30,19 @@ class SummonerApi {
     return apis.GET(`${host}/match/${matchId}`);
   }
 
-  static getSummonerStatsBySummonerId(id) {
-    return apis.GET(`${host}/summoner/${id}/rankedStats`);
+  //GET /summoner/:summonerId/rankedStats
+  static getSummonerStatsBySummonerId(summonerId) {
+    return apis.GET(`${host}/summoner/${summonerId}/rankedStats`);
   }
 
-  static getRankedLeagueBySummonerId(id) {
-    return apis.GET(`${host}/summoner/${id}/leagues`);
+  //GET /summoner/:summonerId/leagues
+  static getRankedLeagueBySummonerId(summonerId) {
+    return apis.GET(`${host}/summoner/${summonerId}/leagues`);
+  }
+
+  //GET /sumomoner/:summonerName/active-game
+  static getCurrentGameBySummonerName(summonerName) {
+    return apis.GET(`${host}/summoner/${summonerName}/active-game`);
   }
 
   static getMatchHistoryBySummonerName(name) {

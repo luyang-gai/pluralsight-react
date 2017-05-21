@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 
 import SummonerInfoCard from '../../components/SummonerInfoCard/index';
-import CardContainer from '../../components_old/summoner/CardContainer';
+import CardContainer from '../../components/CardContainer';
 import Loader from '../../components/Loader/index';
 import {loadCurrentGame} from '../../actions/currentMatchActions';
 
@@ -21,23 +21,30 @@ class SummonerPage extends React.Component {
 
   render() {
     return (
-      <Loader loaded={!!this.props.currentMatch.participants}>
-        <CardContainer>
-          {
-            this.props.currentMatch.participants &&
-            this.props.currentMatch.participants.map(participant =>
-              <SummonerInfoCard key={participant.summonerId} participant={participant}/>
-            )
-          }
-        </CardContainer>
-      </Loader>
+      <div>
+        <Loader loaded={!this.props.loading}>
+          <CardContainer>
+            {
+              this.props.currentMatch.participants &&
+              this.props.currentMatch.participants.map(participant =>
+                <SummonerInfoCard key={participant.summonerId} participant={participant}/>
+              )
+            }
+          </CardContainer>
+        </Loader>
+        {
+          !this.props.loading && !this.props.currentMatch.participants &&
+          <div>That summoner is not currently in a game that has started</div>
+        }
+      </div>
     );
   }
 }
 
 function mapStateToProps(state, ownProps) {
   return {
-    currentMatch: state.currentMatch
+    currentMatch: state.currentMatch,
+    loading: state.loading
   };
 }
 
@@ -49,7 +56,8 @@ function mapDispatchToProps(dispatch) {
 
 SummonerPage.propTypes = {
   routeParams: PropTypes.object.isRequired,
-  currentMatch: PropTypes.object.isRequired
+  currentMatch: PropTypes.object.isRequired,
+  loadCurrentGame: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SummonerPage);

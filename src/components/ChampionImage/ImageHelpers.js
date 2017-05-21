@@ -1,9 +1,8 @@
-import * as apis from './CommonsApi';
-import champions from '../data/champions';
+import champions from '../../data/champions';
 
 const championsHash = champions.data;
 
-class ImageApi {
+class ImageHelpers {
   static getImageURLByChampionName(name) {
     return `http://ddragon.leagueoflegends.com/cdn/7.9.1/img/champion/${name}.png`;
   }
@@ -21,7 +20,7 @@ class ImageApi {
           if (champion.name === 'Vel\'Koz') {
             return 'Velkoz';
           }
-          return champion.name.replace(/\.\s|'/, '', '');
+          return champion.name.replace(/\.\s|'|\s/, '', '');
         }
       }
     }
@@ -30,4 +29,4 @@ class ImageApi {
   }
 }
 
-export default ImageApi;
+export default ImageHelpers;

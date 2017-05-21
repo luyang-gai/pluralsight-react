@@ -39,11 +39,16 @@ const SummonerInfoCard = (props) => {
         <SummonerRankDisplay summoner={summoner}/>
       </div>
       <H3>{summoner.summonerName}</H3>
-      <H4>Champion stats</H4>
-      <div>Win rate: {getChampionWinPercent()}%</div>
-      <div>Games played: {summoner.currentChampionStats.totalSessionsPlayed} games</div>
-      <div>Record: {summoner.currentChampionStats.totalSessionsWon}W {summoner.currentChampionStats.totalSessionsLost}L</div>
-      <div>{getKDAString(summoner.currentChampionStats)}</div>
+        { summoner.currentChampionStats &&
+          <div>
+            <H4>Champion stats</H4>
+            <div>Wins rate: {getChampionWinPercent()}%</div>
+            <div>Games played: {summoner.currentChampionStats.totalSessionsPlayed} games</div>
+            <div>Record: {summoner.currentChampionStats.totalSessionsWon}W {summoner.currentChampionStats.totalSessionsLost}L</div>
+            <div>{getKDAString(summoner.currentChampionStats)}</div>
+          </div>
+        }
+
       <RunesDisplay runes={summoner.runes}/>
       <SummonerSpellsDisplay
         spell1Id={summoner.spell1Id}

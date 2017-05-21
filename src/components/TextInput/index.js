@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import styled from 'styled-components';
-import * as styles from '../../components_old/common/Styles';
+import * as styles from '../../styles/Styles';
 
 const TextInput = styled.input`
   background-color: white;

@@ -6,5 +6,6 @@ export default {
     name: ""
   },
   summonerName: "",
-  currentMatch: {}
+  currentMatch: {},
+  loading: false
 };
