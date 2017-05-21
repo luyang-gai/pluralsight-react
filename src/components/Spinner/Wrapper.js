@@ -1,4 +1,15 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
+
+
+const spinnerAnimation = keyframes`
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+`;
 
 const Wrapper = styled.div`
   margin: 100px auto;
@@ -14,7 +25,7 @@ const Wrapper = styled.div`
     display: inline-block;
   
     -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
-    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    animation: ${spinnerAnimation} 1.2s infinite ease-in-out;
   }
   
   .rect2 {
@@ -37,5 +48,6 @@ const Wrapper = styled.div`
     animation-delay: -0.8s;
   }
 `;
+
 
 export default Wrapper;
