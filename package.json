@@ -9,13 +9,15 @@
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
     "test": "mocha --reporter spec tools/testSetup.js \"src/**/*.test.js\"",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "testjest": "jest"
   },
   "author": "Cory House",
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "6.8.0",
     "bootstrap": "3.3.6",
+    "enzyme": "^2.2.0",
     "jquery": "2.2.3",
     "node-rest-client": "^3.1.0",
     "react": "0.14.9",
@@ -23,6 +25,7 @@
     "react-redux": "4.4.5",
     "react-router": "2.4.0",
     "react-router-redux": "4.0.4",
+    "react-test-renderer": "^15.5.4",
     "redux": "3.5.2",
     "redux-saga": "^0.15.3",
     "styled-components": "^1.4.6",
@@ -52,6 +55,8 @@
     "express": "4.13.4",
     "extract-text-webpack-plugin": "1.0.1",
     "file-loader": "0.8.5",
+    "jest": "^20.0.3",
+    "jest-cli": "^20.0.3",
     "jsdom": "8.5.0",
     "mocha": "2.4.5",
     "nock": "8.0.0",

@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 
 import SearchBar from '../../components/SearchBar/index';
+import Button from '../../components/Button/index';
 import Wrapper from './Wrapper';
 
 import {bindActionCreators} from 'redux';
@@ -30,6 +31,7 @@ class Header extends React.Component {
   render() {
     return (
       <Wrapper>
+        <Button onClick=""></Button>
         <SearchBar onSubmit={this.navigateToSummonerPage} onChange={this.updateSummonerName}/>
       </Wrapper>
     );

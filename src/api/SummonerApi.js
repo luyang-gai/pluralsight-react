@@ -1,6 +1,6 @@
 const Client = require('node-rest-client').Client;
 const client = new Client();
-const host = 'http://localhost:3000';
+const host = 'http://localhost:49160';
 import currentGame from '../data/current-game';
 import * as apis from './CommonsApi';
 

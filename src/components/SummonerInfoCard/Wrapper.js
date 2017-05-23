@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   border: 4px groove green;
   border-radius: 3px;
   margin: 5px;
+  line-height: 1.1;
 `;
 
 export default Wrapper;
