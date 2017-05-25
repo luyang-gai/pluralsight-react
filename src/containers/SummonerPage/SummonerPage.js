@@ -16,7 +16,7 @@ class SummonerPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.loadCurrentGame(this.props.routeParams.summonerName);
+    this.props.loadCurrentGame(this.props.match.params.summonerName);
   }
 
   render() {

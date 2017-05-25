@@ -2,12 +2,18 @@ import React, {PropTypes} from 'react';
 import Header from '../components/Header/index';
 import {connect} from 'react-redux';
 
+import SummonerPage from '../containers/SummonerPage/SummonerPage';
+import { Route } from 'react-router-dom';
+
 class App extends React.Component {
   render() {
     return (
       <div className="container-fluid">
         <Header/>
-        {this.props.children}
+        <div>
+          {/*<Route path="/" component={HomePage}/>*/}
+          <Route path="/summoner/:summonerName" component={SummonerPage}/>
+        </div>
       </div>
     );
   }

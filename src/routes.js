@@ -1,13 +1,12 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import App from './containers/App';
 
-import HomePage from './containers/home/HomePage';
 import SummonerPage from './containers/SummonerPage/SummonerPage';
 
 export default (
-  <Route path="/" component={App}>
-    <IndexRoute component={HomePage}/>
-    <Route path="summoner/:summonerName" component={SummonerPage}/>
-  </Route>
+  <div>
+    <Route exact path="/" component={App}/>
+    <Route path="/summoner/:summonerName" component={SummonerPage}/>
+  </div>
 );

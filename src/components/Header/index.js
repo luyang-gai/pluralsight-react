@@ -25,7 +25,7 @@ class Header extends React.Component {
   }
 
   navigateToSummonerPage() {
-    this.context.router.push(`/summoner/${this.state.summonerName}`);
+    this.context.router.history.push(`/summoner/${this.state.summonerName}`);
   }
 
   render() {
