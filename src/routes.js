@@ -1,8 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import App from './containers/App';
+import { Route } from 'react-router-dom';
+import Async from 'react-code-splitting';
+// import App from './containers/App';
 
 import SummonerPage from './containers/SummonerPage/SummonerPage';
+
+const App = () => <Async load={import('./containers/App')}/>;
 
 export default (
   <div>
