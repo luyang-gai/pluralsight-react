@@ -3,6 +3,7 @@ import Header from '../components/Header/index';
 import {connect} from 'react-redux';
 
 import SummonerPage from '../containers/SummonerPage/SummonerPage';
+import HomePage from '../containers/home/HomePage';
 import { Route } from 'react-router-dom';
 
 class App extends React.Component {
@@ -11,7 +12,7 @@ class App extends React.Component {
       <div className="container-fluid">
         <Header/>
         <div>
-          {/*<Route path="/" component={HomePage}/>*/}
+          <Route exact path="/" component={HomePage}/>
           <Route path="/summoner/:summonerName" component={SummonerPage}/>
         </div>
       </div>

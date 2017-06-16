@@ -1,4 +1,4 @@
-let data = {
+let runes = {
   "5001": {
     "description": "+0.53 attack damage",
     "rune": {
@@ -2961,4 +2961,4 @@ let data = {
   }
 };
 
-export { data };
+export default runes;

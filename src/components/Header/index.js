@@ -13,7 +13,8 @@ class Header extends React.Component {
     super(props, context);
 
     this.state = {
-      summonerName: ""
+      summonerName: "",
+      modalIsOpen: false
     };
 
     this.updateSummonerName = this.updateSummonerName.bind(this);
@@ -31,7 +32,6 @@ class Header extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Button onClick=""></Button>
         <SearchBar onSubmit={this.navigateToSummonerPage} onChange={this.updateSummonerName}/>
       </Wrapper>
     );

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<img
+  className="ciYYTC"
+  src="https://opgg-static.akamaized.net/images/medals/silver_5.png"
+/>
+`;

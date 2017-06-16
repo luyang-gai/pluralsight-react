@@ -1,15 +1,14 @@
 import React from 'react';
 import Wrapper from './Wrapper';
-import {data} from '../../data/runes';
+import runes from '../../data/runes';
 
 import H4 from '../../components/H4/index';
 
 const RunesDisplay = (props) => {
-  let runeDescriptionArray = [];
   let runeMap = {};
 
   const getRuneName = (runeId) => {
-    return data[runeId].description;
+    return runes[runeId].description;
   };
 
   const splitStringByOneSpace = str => {
