@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {summonerSpells} from './summoner-spell-map';
 import Wrapper from './Wrapper';
 

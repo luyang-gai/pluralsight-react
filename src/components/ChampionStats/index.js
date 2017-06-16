@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Wrapper from './Wrapper';
 import H4 from '../H4/index';
 import ColoredText from '../ColoredText/index';

@@ -7,7 +7,8 @@
  * Output: <img> of champion
  */
 
-import React, { PropTypes } from 'react';
+import React  from 'react';
+import PropTypes from 'prop-types';
 
 import ImageHelpers from './ImageHelpers';
 import Wrapper from './Wrapper';
