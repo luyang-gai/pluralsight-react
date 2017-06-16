@@ -45,6 +45,12 @@ const ChampionStats = ({currentChampionStats}) => {
   );
 };
 
+/*
+  EX:
+  currentChampionStats: {
+
+  }
+ */
 ChampionStats.propTypes = {
   currentChampionStats: PropTypes.object.isRequired
 };

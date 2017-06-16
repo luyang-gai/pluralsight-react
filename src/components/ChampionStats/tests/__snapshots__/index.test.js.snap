@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChampionStats/> renders basic ChampionStats correctly 1`] = `
+<div
+  className="foqgVb"
+>
+  <h4
+    className="wkvwR"
+  >
+    Champion stats
+  </h4>
+  <div>
+    Winrate: 
+    <span
+      className="gMHEVS"
+      color="green"
+    >
+      57
+      %
+    </span>
+  </div>
+  <div>
+    Games played: 
+    46
+     games
+  </div>
+  <div>
+    Record: 
+    26
+    W 
+    20
+    L
+  </div>
+  <div>
+    KDA: 
+    <span
+      className="YsgVl"
+      color="red"
+    >
+      2.88
+    </span>
+  </div>
+  <div>
+    8.1
+     K 
+    5.8
+     D 
+    8.7
+     A
+  </div>
+</div>
+`;

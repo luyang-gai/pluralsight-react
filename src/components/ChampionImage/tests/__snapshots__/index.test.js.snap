@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a basic ChampionImage correctly 1`] = `
+exports[`<ChampionImage/> renders a basic ChampionImage correctly 1`] = `
 <img
   className="EhGPD"
   src="http://ddragon.leagueoflegends.com/cdn/7.9.1/img/champion/Wukong.png"
